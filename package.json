@@ -1,0 +1,25 @@
+{
+  "name": "llehunixwebsite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "sass scss:css --style=expanded --source-map",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/llehuni/llehunixwebsite.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/llehuni/llehunixwebsite/issues"
+  },
+  "homepage": "https://github.com/llehuni/llehunixwebsite#readme",
+  "devDependencies": {
+    "sass": "^1.108.1"
+  }
+}
