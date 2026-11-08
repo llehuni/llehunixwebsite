@@ -8,7 +8,25 @@ $colors: (
   orange: #cc7629
 );
 
-$font-main: 'Inter', sans-serif;
+// Change this value to 1, 2 or 3 to switch the active font pair.
+$font-pair-index: 1;
+$font-pairs: (
+  1: (
+    primary: ('Trench Slab', sans-serif),
+    secondary: ('General Sans', sans-serif)
+  ),
+  2: (
+    primary: ('Array', sans-serif),
+    secondary: ('Khand', sans-serif)
+  ),
+  3: (
+    primary: ('Technor', sans-serif),
+    secondary: ('Supreme', sans-serif)
+  )
+);
+$selected-font-pair: map.get($font-pairs, $font-pair-index);
+$font-heading: map.get($selected-font-pair, primary);
+$font-main: map.get($selected-font-pair, secondary);
 $spaces: (
   xs: 0.5rem,
   sm: 1rem,
@@ -34,6 +52,7 @@ $ease: cubic-bezier(0.4, 0, 0.2, 1);
   --color-border: #{color(border)};
   --color-orange: #{color(orange)};
   --font-main: #{$font-main};
+  --font-heading: #{$font-heading};
   --space-xs: #{space(xs)};
   --space-sm: #{space(sm)};
   --space-md: #{space(md)};

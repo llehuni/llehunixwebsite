@@ -4,7 +4,8 @@
   --color-text-muted: #555555;
   --color-border: rgba(17, 17, 17, 0.2);
   --color-orange: #cc7629;
-  --font-main: Inter, sans-serif;
+  --font-main: General Sans, sans-serif;
+  --font-heading: Trench Slab, sans-serif;
   --space-xs: 0.5rem;
   --space-sm: 1rem;
   --space-md: 2rem;
@@ -24,9 +25,18 @@
 body {
   color: #111111;
   background-color: #f2f1ef;
-  font-family: "Inter", sans-serif;
+  font-family: "General Sans", sans-serif;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Trench Slab", sans-serif;
 }
 
 img {
@@ -90,6 +100,7 @@ button {
 .header__nav a {
   padding: 1rem 0;
   font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-family: "Trench Slab", sans-serif;
   font-weight: 600;
   line-height: 1.1;
   letter-spacing: -0.03em;
@@ -160,6 +171,7 @@ button {
 .header__title {
   margin-bottom: 1rem;
   font-size: clamp(3rem, 8vw, 6rem);
+  font-family: "Trench Slab", sans-serif;
   font-weight: 600;
   line-height: 0.95;
   letter-spacing: -0.03em;
@@ -227,6 +239,7 @@ button {
   white-space: nowrap;
   color: #111111;
   font-size: clamp(4rem, 15vw, 12rem);
+  font-family: "Trench Slab", sans-serif;
   font-weight: 600;
   line-height: 1;
   letter-spacing: -0.04em;
@@ -267,6 +280,7 @@ button {
 }
 .about__text {
   font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-family: "Trench Slab", sans-serif;
   font-weight: 500;
   line-height: 1.2;
   letter-spacing: -0.02em;
@@ -376,6 +390,7 @@ button {
 }
 .contact-item__title {
   font-size: 1.125rem;
+  font-family: "Trench Slab", sans-serif;
   font-weight: 600;
 }
 .contact-item__icon {
@@ -471,6 +486,7 @@ button {
 }
 .project-card__title {
   font-size: 1.25rem;
+  font-family: "Trench Slab", sans-serif;
   font-weight: 600;
   letter-spacing: -0.01em;
 }
@@ -630,6 +646,7 @@ button {
 }
 .modal__title {
   font-size: clamp(2rem, 4vw, 3rem);
+  font-family: "Trench Slab", sans-serif;
   font-weight: 600;
   line-height: 1.1;
   letter-spacing: -0.02em;
@@ -749,6 +766,7 @@ button {
   margin-bottom: 2rem;
   color: transparent;
   font-size: clamp(8rem, 25vw, 20rem);
+  font-family: "Trench Slab", sans-serif;
   font-weight: 700;
   line-height: 0.8;
   letter-spacing: -0.05em;
@@ -756,11 +774,11 @@ button {
   -webkit-text-stroke: 2px #111111;
 }
 .error-page .error__code::after {
+  content: attr(data-error-code);
   position: absolute;
   z-index: -1;
   top: 4px;
   left: 4px;
-  content: attr(data-error-code);
   color: #111111;
   opacity: 0.1;
   -webkit-text-stroke: 0;
@@ -768,6 +786,7 @@ button {
 .error-page .error__title {
   margin-bottom: 1rem;
   font-size: clamp(2rem, 5vw, 3.5rem);
+  font-family: "Trench Slab", sans-serif;
   font-weight: 600;
   letter-spacing: -0.02em;
 }
