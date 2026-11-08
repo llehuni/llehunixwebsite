@@ -1,6 +1,7 @@
 @use 'abstracts/variables' as *;
 @use 'base/base';
 @use 'components/navigation';
+@use 'components/loader';
 @use 'pages/home';
 @use 'pages/projects';
 @use 'pages/error';
