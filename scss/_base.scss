@@ -1,0 +1,51 @@
+@use 'variables' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: color(text);
+  background-color: color(bg);
+  font-family: $font-main;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  border: 0;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+}
+
+.container {
+  position: relative;
+  max-width: $max-width;
+  margin: 0 auto;
+  border-right: 1px solid color(border);
+  border-left: 1px solid color(border);
+  background-color: color(bg);
+}
+
+.projects-page {
+  overflow-x: hidden;
+
+  .container {
+    min-height: 100vh;
+  }
+}
