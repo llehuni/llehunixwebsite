@@ -1,10 +1,11 @@
-const http = require('node:http');
-const path = require('node:path');
-const fs = require('node:fs/promises');
+import http from 'node:http';
+import path from 'node:path';
+import fs from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
 
 const PORT = Number(process.env.PORT) || 3000;
 const HOST = process.env.HOST || 'localhost';
-const ROOT_DIR = __dirname;
+const ROOT_DIR = path.dirname(fileURLToPath(import.meta.url));
 
 const routes = new Map([
   ['/', '/index.html'],
