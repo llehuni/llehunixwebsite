@@ -65,11 +65,11 @@
     -webkit-text-stroke: 2px color(text);
 
     &::after {
+      content: attr(data-error-code);
       position: absolute;
       z-index: -1;
       top: 4px;
       left: 4px;
-      content: '404';
       color: color(text);
       opacity: 0.1;
       -webkit-text-stroke: 0;

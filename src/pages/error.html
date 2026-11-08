@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Page Not Found</title>
+    <title>__ERROR_CODE__ - Error</title>
     
     <!-- Police -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/main.css">
 </head>
-<body class="error-page">
+<body class="error-page" data-error-code="__ERROR_CODE__">
 
     <div class="container">
         
@@ -21,12 +22,11 @@
             <button class="header__lang-btn" data-lang="fr">FR</button>
         </div>
 
-        <!-- CONTENU 404 -->
+        <!-- CONTENU DYNAMIQUE -->
         <main class="error-section">
-            <h1 class="error__code">404</h1>
-            <h2 class="error__title" data-i18n="error_title">Page not found.</h2>
+            <h1 class="error__code" data-error-code="__ERROR_CODE__">__ERROR_CODE__</h1>
+            <h2 class="error__title" data-i18n="error_title"></h2>
             <p class="error__desc" data-i18n="error_desc">
-                The page you are looking for doesn't exist or has been moved. Let's get you back on track.
             </p>
             
             <a href="/" class="btn-liquid">

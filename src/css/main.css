@@ -760,7 +760,7 @@ button {
   z-index: -1;
   top: 4px;
   left: 4px;
-  content: "404";
+  content: attr(data-error-code);
   color: #111111;
   opacity: 0.1;
   -webkit-text-stroke: 0;
