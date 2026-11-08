@@ -1,0 +1,353 @@
+        /* SECTION PROJETS */
+        .projects {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .projects__grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-lg) var(--space-md);
+        }
+
+        /* CARTE PROJET */
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+            cursor: pointer;
+        }
+
+        .project-card__image-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            background-color: var(--color-border);
+            overflow: hidden;
+            border-radius: 4px;
+        }
+
+        .project-card__image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-card:hover .project-card__image { transform: scale(1.05); }
+
+        .project-card__overlay {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-card:hover .project-card__overlay { opacity: 1; }
+
+        .project-card__overlay-icon {
+            width: 48px;
+            height: 48px;
+            background-color: var(--color-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: translateY(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-card__overlay-icon { transform: translateY(0); }
+
+        .project-card__overlay-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: var(--color-text);
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .project-card__content {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding-top: var(--space-xs);
+        }
+
+        .project-card__title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        .project-card__desc {
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+        }
+
+        /* =========================================
+           MODAL PROJECT DETAIL
+           ========================================= */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background-color: var(--color-bg);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            transform-origin: bottom left;
+            transform: scale(0);
+            opacity: 0;
+            visibility: hidden;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease, visibility 0.6s;
+            overflow-y: auto;
+        }
+
+        .modal.is-active {
+            transform: scale(1);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-md);
+            border-bottom: 1px solid var(--color-border);
+            position: sticky;
+            top: 0;
+            background-color: var(--color-bg);
+            z-index: 10;
+        }
+
+        .modal__nav {
+            display: flex;
+            gap: var(--space-sm);
+        }
+
+        .modal__nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--color-text-muted);
+            transition: color 0.3s, opacity 0.3s;
+        }
+
+        .modal__nav-btn:hover:not(:disabled) { color: var(--color-text); }
+        .modal__nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+        .modal__nav-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+        }
+
+        .modal__close {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--color-border);
+            transition: background-color 0.3s;
+        }
+
+        .modal__close:hover { background-color: rgba(0,0,0,0.05); }
+
+        .modal__close svg {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+        }
+
+        .modal__body {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            padding: var(--space-md);
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Section 1 : Slider */
+        .modal__slider-section {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-lg);
+        }
+
+        .modal__slider-controls {
+            display: flex;
+            justify-content: flex-end;
+            gap: var(--space-xs);
+        }
+
+        .slider-arrow {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+
+        .slider-arrow:hover:not(:disabled) { background-color: rgba(0,0,0,0.05); }
+        .slider-arrow:disabled { opacity: 0.3; cursor: not-allowed; }
+
+        .slider-arrow svg {
+            width: 16px;
+            height: 16px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+        }
+
+        .modal__slider {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background-color: #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .modal__slider img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .modal__slider img.active { opacity: 1; }
+
+        /* 1. Dots du Slider */
+        .modal__slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-xs);
+            margin-top: var(--space-sm);
+        }
+
+        .modal__slider-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: transparent;
+            border: 2px solid var(--color-text-muted);
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .modal__slider-dot.active {
+            background-color: var(--color-text);
+            border-color: var(--color-text);
+        }
+
+        /* Section 2 : Infos */
+        .modal__info-section {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+            flex: 1;
+        }
+
+        .modal__title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .modal__desc {
+            font-size: 1.125rem;
+            color: var(--color-text-muted);
+            max-width: 700px;
+        }
+
+        .modal__stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-xs);
+        }
+
+        .modal__stack-item {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.4rem 1rem;
+            border: 1px solid var(--color-border);
+            border-radius: 50px;
+        }
+
+        /* 2. BOUTON LIQUID (Copié de l'accueil) */
+        .btn-liquid {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-xs);
+            padding: 1rem 2rem;
+            border: 1px solid var(--color-text);
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--color-text);
+            overflow: hidden;
+            z-index: 1;
+            transition: color 0.35s ease;
+            text-decoration: none;
+            margin-top: auto;
+            align-self: flex-start;
+        }
+
+        .btn-liquid::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--color-text);
+            transform: scaleY(0);
+            transform-origin: bottom center;
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+        }
+
+        .btn-liquid:hover { color: var(--color-bg); }
+        .btn-liquid:hover::before { transform: scaleY(1); }
+
+        .btn-liquid svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn-liquid span {
+            position: relative;
+            z-index: 2;
+        }
+
