@@ -73,6 +73,7 @@
 
   &__menu-btn {
     position: absolute;
+    z-index: 20;
     top: space(lg);
     right: space(md);
     display: flex;
