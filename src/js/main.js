@@ -1,6 +1,7 @@
 const pageModules = {
   'home-page': './home.js',
-  'projects-page': './projects.js'
+  'projects-page': './projects.js',
+  'error-page': './error.js'
 };
 
 const pageModule = Object.entries(pageModules)

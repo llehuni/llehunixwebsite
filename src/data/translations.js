@@ -57,3 +57,18 @@ export const projectsTranslations = {
         footer_text: "Je construis des trucs."
     }
 };
+
+export const errorTranslations = {
+    en: {
+        error_title: "Page not found.",
+        error_desc: "The page you are looking for doesn't exist or has been moved. Let's get you back on track.",
+        back_home: "Back to Home",
+        footer_text: "I build stuff."
+    },
+    fr: {
+        error_title: "Page introuvable.",
+        error_desc: "La page que vous recherchez n'existe pas ou a été déplacée. Revenons sur le bon chemin.",
+        back_home: "Retour à l'accueil",
+        footer_text: "Je construis des trucs."
+    }
+};

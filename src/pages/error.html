@@ -36,61 +36,9 @@
         </main>
 
         <!-- FOOTER -->
-        <footer class="footer">
-            <div class="marquee">
-                <span data-i18n="footer_text">I build stuff.&nbsp;</span>
-                <span data-i18n="footer_text">I build stuff.&nbsp;</span>
-                <span data-i18n="footer_text">I build stuff.&nbsp;</span>
-                <span data-i18n="footer_text">I build stuff.&nbsp;</span>
-            </div>
-        </footer>
+        <footer class="footer" id="site-footer"></footer>
     </div>
 
-    <script>
-        const translations = {
-            en: {
-                error_title: "Page not found.",
-                error_desc: "The page you are looking for doesn't exist or has been moved. Let's get you back on track.",
-                back_home: "Back to Home",
-                footer_text: "I build stuff."
-            },
-            fr: {
-                error_title: "Page introuvable.",
-                error_desc: "La page que vous recherchez n'existe pas ou a été déplacée. Revenons sur le bon chemin.",
-                back_home: "Retour à l'accueil",
-                footer_text: "Je construis des trucs."
-            }
-        };
-
-        document.addEventListener('DOMContentLoaded', () => {
-            
-            let currentLang = 'en';
-
-            // Traduction
-            function applyLanguage(lang) {
-                currentLang = lang;
-                document.querySelectorAll('[data-i18n]').forEach(element => {
-                    const key = element.getAttribute('data-i18n');
-                    if (translations[lang][key]) {
-                        element.textContent = translations[lang][key];
-                    }
-                });
-                document.querySelectorAll('.header__lang-btn').forEach(btn => {
-                    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
-                });
-                document.documentElement.lang = lang;
-            }
-
-            // Écouteurs sur les boutons de langue
-            document.querySelectorAll('.header__lang-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    applyLanguage(e.currentTarget.getAttribute('data-lang'));
-                });
-            });
-
-            applyLanguage('en');
-        });
-    </script>
+    <script type="module" src="/js/main.js"></script>
 </body>
 </html>
