@@ -8,9 +8,7 @@ const ROOT_DIR = __dirname;
 
 const routes = new Map([
   ['/', '/index.html'],
-  ['/index.html', '/index.html'],
-  ['/projects', '/projects.html'],
-  ['/projects.html', '/projects.html']
+  ['/project', '/projects.html']
 ]);
 
 const contentTypes = new Map([
@@ -28,8 +26,14 @@ const contentTypes = new Map([
 ]);
 
 function getFilePath(requestPath) {
-  const routePath = routes.get(requestPath) || requestPath;
-  const relativePath = routePath.replace(/^[/\\]+/, '');
+  const routePath = routes.get(requestPath);
+
+  if (!routePath && path.extname(requestPath).toLowerCase() === '.html') {
+    return null;
+  }
+
+  const filePathValue = routePath || requestPath;
+  const relativePath = filePathValue.replace(/^[/\\]+/, '');
   const filePath = path.resolve(ROOT_DIR, relativePath);
 
   if (filePath !== ROOT_DIR && !filePath.startsWith(`${ROOT_DIR}${path.sep}`)) {
@@ -58,6 +62,11 @@ async function handleRequest(request, response) {
     requestPath = new URL(request.url, `http://${request.headers.host || 'localhost'}`).pathname;
   } catch {
     sendText(response, 400, 'Bad Request');
+    return;
+  }
+
+  if (!routes.has(requestPath) && path.extname(requestPath).toLowerCase() === '.html') {
+    sendText(response, 404, 'Not Found');
     return;
   }
 
@@ -114,4 +123,3 @@ const server = http.createServer((request, response) => {
 server.listen(PORT, HOST, () => {
   console.log(`Website server running at http://${HOST}:${PORT}`);
 });
-

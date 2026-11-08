@@ -14,8 +14,8 @@ Le site est accessible sur [http://localhost:3000](http://localhost:3000).
 
 Routes disponibles :
 
-- `/` ou `/index.html` : page d'accueil ;
-- `/projects` ou `/projects.html` : page des projets.
+- `/` : page d'accueil ;
+- `/project` : page des projets.
 
 Pour redémarrer automatiquement le serveur pendant les modifications :
 
