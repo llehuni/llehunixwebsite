@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bent Lindberg - Web Apps</title>
+    
+    <!-- Police -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-bg: #f2f1ef;
+            --color-text: #111111;
+            --color-text-muted: #555555;
+            --color-border: rgba(17, 17, 17, 0.2);
+            --color-orange: #cc7629;
+            --font-main: 'Inter', sans-serif;
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 2rem;
+            --space-lg: 4rem;
+            --space-xl: 6rem;
+            --max-width: 1200px;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        img { max-width: 100%; display: block; }
+        a { text-decoration: none; color: inherit; }
+        button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            background-color: var(--color-bg);
+            border-left: 1px solid var(--color-border);
+            border-right: 1px solid var(--color-border);
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* MENU */
+        .header__nav-wrapper {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 100%;
+            background-color: var(--color-text);
+            position: relative;
+            z-index: 50;
+        }
+
+        .header__nav-wrapper.is-active { grid-template-rows: 1fr; }
+        .header__nav-inner { overflow: hidden; }
+
+        .header__nav {
+            color: var(--color-bg);
+            display: flex;
+            flex-direction: column;
+            padding: calc(var(--space-lg) + 2.5rem) var(--space-md) var(--space-lg);
+        }
+
+        .header__nav a {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 600;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            padding: var(--space-sm) 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .header__nav a:hover { opacity: 0.7; }
+        .header__nav a.active { text-decoration: line-through; opacity: 0.5; }
+
+        .header__lang-switch {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            margin-top: var(--space-lg);
+            font-size: 1rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .header__lang-btn {
+            background: none;
+            border: none;
+            color: inherit;
+            font-family: inherit;
+            font-size: inherit;
+            font-weight: inherit;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .header__lang-btn:hover, .header__lang-btn.active { color: var(--color-bg); }
+        .header__lang-btn.active { text-decoration: underline; text-underline-offset: 4px; }
+
+        /* BOUTON MENU */
+        .header__menu-btn {
+            position: absolute;
+            top: var(--space-lg);
+            right: var(--space-md);
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            background-color: var(--color-text);
+            color: var(--color-bg);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            z-index: 60;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .header__menu-btn.is-active { background-color: var(--color-bg); color: var(--color-text); }
+
+        .header__menu-icon { display: flex; flex-direction: column; gap: 3px; }
+        .header__menu-icon span { display: block; width: 12px; height: 2px; background-color: currentColor; transition: transform 0.3s ease; }
+
+        /* HEADER CONTENT */
+        .header {
+            padding-top: calc(var(--space-lg) + 2rem); 
+            padding-bottom: var(--space-md);
+            border-bottom: 1px solid var(--color-border);
+            position: relative;
+        }
+
+        .header__title-group {
+            max-width: 800px;
+            margin-bottom: var(--space-xl);
+            padding: 0 var(--space-md);
+        }
+
+        .header__title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 600;
+            line-height: 0.95;
+            letter-spacing: -0.03em;
+            margin-bottom: var(--space-sm);
+        }
+
+        .header__location { font-size: 0.875rem; font-weight: 500; }
+
+        .header__bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.875rem;
+            font-weight: 500;
+            padding: 0 var(--space-md);
+        }
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: opacity 0.3s;
+        }
+        
+        .back-link:hover { opacity: 0.6; }
+        
+        .back-link svg {
+            width: 16px;
+            height: 16px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* SECTION PROJETS */
+        .projects {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .projects__grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-lg) var(--space-md);
+        }
+
+        /* CARTE PROJET */
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+            cursor: pointer;
+        }
+
+        .project-card__image-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            background-color: var(--color-border);
+            overflow: hidden;
+            border-radius: 4px;
+        }
+
+        .project-card__image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-card:hover .project-card__image { transform: scale(1.05); }
+
+        .project-card__overlay {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-card:hover .project-card__overlay { opacity: 1; }
+
+        .project-card__overlay-icon {
+            width: 48px;
+            height: 48px;
+            background-color: var(--color-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: translateY(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-card__overlay-icon { transform: translateY(0); }
+
+        .project-card__overlay-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: var(--color-text);
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .project-card__content {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding-top: var(--space-xs);
+        }
+
+        .project-card__title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        .project-card__desc {
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+        }
+
+        /* FOOTER */
+        .footer {
+            padding: var(--space-md) 0;
+            overflow: hidden;
+            background-color: var(--color-bg);
+            display: flex;
+        }
+
+        .marquee {
+            display: flex;
+            white-space: nowrap;
+            font-size: clamp(4rem, 15vw, 12rem);
+            font-weight: 600;
+            letter-spacing: -0.04em;
+            line-height: 1;
+            color: var(--color-text);
+            animation: scroll 15s linear infinite;
+        }
+
+        .marquee span { padding-right: var(--space-md); }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* =========================================
+           MODAL PROJECT DETAIL
+           ========================================= */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background-color: var(--color-bg);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            transform-origin: bottom left;
+            transform: scale(0);
+            opacity: 0;
+            visibility: hidden;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease, visibility 0.6s;
+            overflow-y: auto;
+        }
+
+        .modal.is-active {
+            transform: scale(1);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-md);
+            border-bottom: 1px solid var(--color-border);
+            position: sticky;
+            top: 0;
+            background-color: var(--color-bg);
+            z-index: 10;
+        }
+
+        .modal__nav {
+            display: flex;
+            gap: var(--space-sm);
+        }
+
+        .modal__nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--color-text-muted);
+            transition: color 0.3s, opacity 0.3s;
+        }
+
+        .modal__nav-btn:hover:not(:disabled) { color: var(--color-text); }
+        .modal__nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+        .modal__nav-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+        }
+
+        .modal__close {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--color-border);
+            transition: background-color 0.3s;
+        }
+
+        .modal__close:hover { background-color: rgba(0,0,0,0.05); }
+
+        .modal__close svg {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+        }
+
+        .modal__body {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            padding: var(--space-md);
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Section 1 : Slider */
+        .modal__slider-section {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-lg);
+        }
+
+        .modal__slider-controls {
+            display: flex;
+            justify-content: flex-end;
+            gap: var(--space-xs);
+        }
+
+        .slider-arrow {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+
+        .slider-arrow:hover:not(:disabled) { background-color: rgba(0,0,0,0.05); }
+        .slider-arrow:disabled { opacity: 0.3; cursor: not-allowed; }
+
+        .slider-arrow svg {
+            width: 16px;
+            height: 16px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+        }
+
+        .modal__slider {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background-color: #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .modal__slider img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .modal__slider img.active { opacity: 1; }
+
+        /* 1. Dots du Slider */
+        .modal__slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-xs);
+            margin-top: var(--space-sm);
+        }
+
+        .modal__slider-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: transparent;
+            border: 2px solid var(--color-text-muted);
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .modal__slider-dot.active {
+            background-color: var(--color-text);
+            border-color: var(--color-text);
+        }
+
+        /* Section 2 : Infos */
+        .modal__info-section {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+            flex: 1;
+        }
+
+        .modal__title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .modal__desc {
+            font-size: 1.125rem;
+            color: var(--color-text-muted);
+            max-width: 700px;
+        }
+
+        .modal__stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-xs);
+        }
+
+        .modal__stack-item {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.4rem 1rem;
+            border: 1px solid var(--color-border);
+            border-radius: 50px;
+        }
+
+        /* 2. BOUTON LIQUID (Copié de l'accueil) */
+        .btn-liquid {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-xs);
+            padding: 1rem 2rem;
+            border: 1px solid var(--color-text);
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--color-text);
+            overflow: hidden;
+            z-index: 1;
+            transition: color 0.35s ease;
+            text-decoration: none;
+            margin-top: auto;
+            align-self: flex-start;
+        }
+
+        .btn-liquid::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--color-text);
+            transform: scaleY(0);
+            transform-origin: bottom center;
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+        }
+
+        .btn-liquid:hover { color: var(--color-bg); }
+        .btn-liquid:hover::before { transform: scaleY(1); }
+
+        .btn-liquid svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn-liquid span {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .projects__grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 600px) {
+            .header__menu-btn { top: var(--space-md); right: var(--space-md); }
+            .header__title-group { margin-top: var(--space-lg); }
+            .header__bottom { flex-direction: column; align-items: flex-start; gap: var(--space-md); }
+            .modal__header { flex-direction: column; gap: var(--space-md); align-items: flex-start; }
+            .modal__close { position: absolute; top: var(--space-md); right: var(--space-md); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- MENU -->
+        <div class="header__nav-wrapper" id="nav-wrapper">
+            <div class="header__nav-inner">
+                <nav class="header__nav">
+                    <a href="index.html" data-i18n="nav_about">About</a>
+                    <a href="projects.html" class="active" data-i18n="nav_projects">Projects</a>
+                    <a href="index.html#contact" data-i18n="nav_contact">Contact</a>
+                    
+                    <div class="header__lang-switch">
+                        <button class="header__lang-btn active" data-lang="en">EN</button>
+                        <span>|</span>
+                        <button class="header__lang-btn" data-lang="fr">FR</button>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Bouton Menu -->
+        <button class="header__menu-btn" id="menu-btn">
+            <div class="header__menu-icon">
+                <span></span>
+                <span></span>
+            </div>
+            <span data-i18n="menu_btn">Menu</span>
+        </button>
+
+        <header class="header">
+            <div class="header__title-group">
+                <h1 class="header__title" data-i18n="page_title">Web Apps<br>Projects.</h1>
+                <p class="header__location" data-i18n="page_subtitle">A collection of my recent web applications.</p>
+            </div>
+            <div class="header__bottom">
+                <a href="index.html" class="back-link">
+                    <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    <span data-i18n="back_home">Back to Home</span>
+                </a>
+            </div>
+        </header>
+
+        <!-- GRILLE DE PROJETS -->
+        <section class="projects" id="work">
+            <div class="projects__grid" id="projects-grid">
+                <!-- Les cartes sont générées par JavaScript -->
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="marquee">
+                <span data-i18n="footer_text">I build stuff.&nbsp;</span>
+                <span data-i18n="footer_text">I build stuff.&nbsp;</span>
+                <span data-i18n="footer_text">I build stuff.&nbsp;</span>
+                <span data-i18n="footer_text">I build stuff.&nbsp;</span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- MODAL PROJECT DETAIL -->
+    <div class="modal" id="project-modal">
+        <div class="modal__header">
+            <div class="modal__nav">
+                <button class="modal__nav-btn" id="prev-project">
+                    <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+                    <span data-i18n="prev_project">Previous</span>
+                </button>
+                <button class="modal__nav-btn" id="next-project">
+                    <span data-i18n="next_project">Next</span>
+                    <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+                </button>
+            </div>
+            <button class="modal__close" id="close-modal">
+                <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </button>
+        </div>
+
+        <div class="modal__body">
+            <!-- Section 1 : Slider -->
+            <div class="modal__slider-section">
+                <div class="modal__slider-controls">
+                    <button class="slider-arrow" id="prev-image" disabled>
+                        <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+                    </button>
+                    <button class="slider-arrow" id="next-image">
+                        <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+                    </button>
+                </div>
+                <div class="modal__slider" id="modal-slider">
+                    <!-- Les images seront injectées ici -->
+                </div>
+                <!-- 1. Conteneur des Dots -->
+                <div class="modal__slider-dots" id="modal-slider-dots">
+                    <!-- Les dots seront injectés ici -->
+                </div>
+            </div>
+
+            <!-- Section 2 : Infos -->
+            <div class="modal__info-section">
+                <h2 class="modal__title" id="modal-title">App Name</h2>
+                <p class="modal__desc" id="modal-desc">Brief description.</p>
+                
+                <div class="modal__stack" id="modal-stack">
+                    <!-- Stack injectée ici -->
+                </div>
+
+                <!-- 2. Bouton GitHub avec classe .btn-liquid -->
+                <a href="#" class="btn-liquid" id="modal-github" target="_blank">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                    <span data-i18n="view_github">View on GitHub</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* DONNÉES DES PROJETS */
+        const projectsData = [
+            {
+                id: 1,
+                title: { en: "TaskFlow App", fr: "Application TaskFlow" },
+                desc: { 
+                    en: "A productivity web app designed to help teams manage tasks seamlessly with real-time collaboration.", 
+                    fr: "Une application web de productivité conçue pour aider les équipes à gérer leurs tâches en temps réel." 
+                },
+                stack: ["React", "Node.js", "MongoDB", "Socket.io"],
+                github: "https://github.com",
+                images: [
+                    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1200&auto=format&fit=crop"
+                ]
+            },
+            {
+                id: 2,
+                title: { en: "CryptoViz Dashboard", fr: "Tableau de bord CryptoViz" },
+                desc: { 
+                    en: "A real-time cryptocurrency tracking dashboard with interactive charts and data visualization.", 
+                    fr: "Un tableau de bord de suivi des cryptomonnaies en temps réel avec des graphiques interactifs." 
+                },
+                stack: ["Vue.js", "D3.js", "Tailwind CSS"],
+                github: "https://github.com",
+                images: [
+                    "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1200&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1642790106117-e829e14a795f?q=80&w=1200&auto=format&fit=crop"
+                ]
+            },
+            {
+                id: 3,
+                title: { en: "EcoShop E-commerce", fr: "E-commerce EcoShop" },
+                desc: { 
+                    en: "A sustainable e-commerce platform featuring a modern checkout flow and Stripe integration.", 
+                    fr: "Une plateforme e-commerce durable avec un flux de paiement moderne et une intégration Stripe." 
+                },
+                stack: ["Next.js", "Stripe", "Prisma", "PostgreSQL"],
+                github: "https://github.com",
+                images: [
+                    "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1200&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?q=80&w=1200&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=1200&auto=format&fit=crop"
+                ]
+            },
+            {
+                id: 4,
+                title: { en: "DevConnect Social", fr: "Réseau DevConnect" },
+                desc: { 
+                    en: "A social network for developers to share projects, find collaborators, and chat.", 
+                    fr: "Un réseau social pour les développeurs pour partager des projets, trouver des collaborateurs et discuter." 
+                },
+                stack: ["MERN Stack", "Redux", "JWT"],
+                github: "https://github.com",
+                images: [
+                    "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1200&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1200&auto=format&fit=crop"
+                ]
+            }
+        ];
+
+        const translations = {
+            en: {
+                nav_about: "About", nav_projects: "Projects", nav_contact: "Contact",
+                menu_btn: "Menu",
+                page_title: "Web Apps<br>Projects.",
+                page_subtitle: "A collection of my recent web applications.",
+                back_home: "Back to Home",
+                prev_project: "Previous",
+                next_project: "Next",
+                view_github: "View on GitHub",
+                footer_text: "I build stuff."
+            },
+            fr: {
+                nav_about: "À propos", nav_projects: "Réalisations", nav_contact: "Contact",
+                menu_btn: "Menu",
+                page_title: "Projets<br>Web Apps.",
+                page_subtitle: "Une sélection de mes applications web récentes.",
+                back_home: "Retour à l'accueil",
+                prev_project: "Précédent",
+                next_project: "Suivant",
+                view_github: "Voir sur GitHub",
+                footer_text: "Je construis des trucs."
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            let currentLang = 'en';
+            let currentProjectIndex = 0;
+            let currentImageIndex = 0;
+            let imageSlideInterval; // Variable pour le timer du slider
+
+            /* Éléments du DOM */
+            const grid = document.getElementById('projects-grid');
+            const modal = document.getElementById('project-modal');
+            const closeModalBtn = document.getElementById('close-modal');
+            const prevProjectBtn = document.getElementById('prev-project');
+            const nextProjectBtn = document.getElementById('next-project');
+            const prevImageBtn = document.getElementById('prev-image');
+            const nextImageBtn = document.getElementById('next-image');
+            const modalSlider = document.getElementById('modal-slider');
+            const modalSliderDots = document.getElementById('modal-slider-dots');
+            const modalTitle = document.getElementById('modal-title');
+            const modalDesc = document.getElementById('modal-desc');
+            const modalStack = document.getElementById('modal-stack');
+            const modalGithub = document.getElementById('modal-github');
+
+            /* 1. GÉNÉRATION DES CARTES */
+            function renderGrid() {
+                grid.innerHTML = projectsData.map((project, index) => `
+                    <article class="project-card" data-index="${index}">
+                        <div class="project-card__image-wrapper">
+                            <img src="${project.images[0]}" alt="${project.title[currentLang]}" class="project-card__image">
+                            <div class="project-card__overlay">
+                                <div class="project-card__overlay-icon">
+                                    <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-card__content">
+                            <h2 class="project-card__title">${project.title[currentLang]}</h2>
+                            <p class="project-card__desc">${project.desc[currentLang]}</p>
+                        </div>
+                    </article>
+                `).join('');
+
+                document.querySelectorAll('.project-card').forEach(card => {
+                    card.addEventListener('click', () => {
+                        const index = parseInt(card.getAttribute('data-index'));
+                        openModal(index);
+                    });
+                });
+            }
+
+            /* 2. LOGIQUE DU MODAL */
+            function openModal(index) {
+                currentProjectIndex = index;
+                currentImageIndex = 0;
+                updateModalContent();
+                modal.classList.add('is-active');
+                document.body.style.overflow = 'hidden';
+                startImageAutoPlay(); // Démarre l'auto-play
+            }
+
+            function closeModal() {
+                modal.classList.remove('is-active');
+                document.body.style.overflow = '';
+                stopImageAutoPlay(); // Arrête l'auto-play
+            }
+
+            function updateModalContent() {
+                const project = projectsData[currentProjectIndex];
+                
+                modalTitle.textContent = project.title[currentLang];
+                modalDesc.textContent = project.desc[currentLang];
+                modalGithub.href = project.github;
+                
+                modalStack.innerHTML = project.stack.map(tech => `<span class="modal__stack-item">${tech}</span>`).join('');
+
+                // Injection des images
+                modalSlider.innerHTML = project.images.map((img, i) => 
+                    `<img src="${img}" class="${i === 0 ? 'active' : ''}" alt="Screenshot ${i+1}">`
+                ).join('');
+
+                // 1. Injection des dots
+                modalSliderDots.innerHTML = project.images.map((_, i) => 
+                    `<div class="modal__slider-dot ${i === 0 ? 'active' : ''}" data-index="${i}"></div>`
+                ).join('');
+
+                // Écouteurs sur les dots
+                modalSliderDots.querySelectorAll('.modal__slider-dot').forEach(dot => {
+                    dot.addEventListener('click', (e) => {
+                        currentImageIndex = parseInt(e.target.dataset.index);
+                        updateSliderImage();
+                        startImageAutoPlay(); // Reset timer
+                    });
+                });
+
+                updateSliderArrows();
+                updateProjectNavButtons();
+            }
+
+            /* 3. LOGIQUE DU SLIDER D'IMAGES */
+            function updateSliderImage() {
+                const images = modalSlider.querySelectorAll('img');
+                images.forEach((img, i) => {
+                    img.classList.toggle('active', i === currentImageIndex);
+                });
+
+                // Mise à jour des dots
+                const dots = modalSliderDots.querySelectorAll('.modal__slider-dot');
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === currentImageIndex);
+                });
+
+                updateSliderArrows();
+            }
+
+            function updateSliderArrows() {
+                const project = projectsData[currentProjectIndex];
+                prevImageBtn.disabled = currentImageIndex === 0;
+                nextImageBtn.disabled = currentImageIndex === project.images.length - 1;
+            }
+
+            // 1. Fonctions Auto-play
+            function startImageAutoPlay() {
+                stopImageAutoPlay(); // Évite les doublons
+                imageSlideInterval = setInterval(() => {
+                    const project = projectsData[currentProjectIndex];
+                    currentImageIndex = (currentImageIndex + 1) % project.images.length;
+                    updateSliderImage();
+                }, 5000);
+            }
+
+            function stopImageAutoPlay() {
+                clearInterval(imageSlideInterval);
+            }
+
+            // Événements flèches
+            prevImageBtn.addEventListener('click', () => {
+                if (currentImageIndex > 0) {
+                    currentImageIndex--;
+                    updateSliderImage();
+                    startImageAutoPlay(); // Reset timer
+                }
+            });
+
+            nextImageBtn.addEventListener('click', () => {
+                const project = projectsData[currentProjectIndex];
+                if (currentImageIndex < project.images.length - 1) {
+                    currentImageIndex++;
+                    updateSliderImage();
+                    startImageAutoPlay(); // Reset timer
+                }
+            });
+
+            /* 4. NAVIGATION ENTRE PROJETS */
+            function updateProjectNavButtons() {
+                prevProjectBtn.disabled = currentProjectIndex === 0;
+                nextProjectBtn.disabled = currentProjectIndex === projectsData.length - 1;
+            }
+
+            prevProjectBtn.addEventListener('click', () => {
+                if (currentProjectIndex > 0) {
+                    currentProjectIndex--;
+                    currentImageIndex = 0;
+                    updateModalContent();
+                    startImageAutoPlay();
+                }
+            });
+
+            nextProjectBtn.addEventListener('click', () => {
+                if (currentProjectIndex < projectsData.length - 1) {
+                    currentProjectIndex++;
+                    currentImageIndex = 0;
+                    updateModalContent();
+                    startImageAutoPlay();
+                }
+            });
+
+            closeModalBtn.addEventListener('click', closeModal);
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.classList.contains('is-active')) {
+                    closeModal();
+                }
+            });
+
+            /* 5. TRADUCTION */
+            function applyLanguage(lang) {
+                currentLang = lang;
+                document.querySelectorAll('[data-i18n]').forEach(element => {
+                    const key = element.getAttribute('data-i18n');
+                    if (translations[lang][key]) {
+                        if (key === 'page_title') {
+                            element.innerHTML = translations[lang][key];
+                        } else {
+                            element.textContent = translations[lang][key];
+                        }
+                    }
+                });
+                document.querySelectorAll('.header__lang-btn').forEach(btn => {
+                    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+                });
+                document.documentElement.lang = lang;
+
+                renderGrid();
+                if (modal.classList.contains('is-active')) {
+                    updateModalContent();
+                }
+            }
+
+            document.querySelectorAll('.header__lang-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    applyLanguage(e.currentTarget.getAttribute('data-lang'));
+                });
+            });
+
+            /* 6. MENU TOGGLE */
+            const menuBtn = document.getElementById('menu-btn');
+            const navWrapper = document.getElementById('nav-wrapper');
+            const spans = menuBtn.querySelectorAll('span');
+
+            menuBtn.addEventListener('click', () => {
+                const isActive = navWrapper.classList.toggle('is-active');
+                menuBtn.classList.toggle('is-active', isActive);
+                
+                if (isActive) {
+                    spans[0].style.transform = 'rotate(45deg) translate(2px, 2px)';
+                    spans[1].style.transform = 'rotate(-45deg) translate(2px, -2px)';
+                } else {
+                    spans[0].style.transform = 'none';
+                    spans[1].style.transform = 'none';
+                }
+            });
+
+            /* INITIALISATION */
+            renderGrid();
+            applyLanguage('en');
+        });
+    </script>
+</body>
+</html>

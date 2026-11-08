@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bent Lindberg - Digital Designer</title>
+    
+    <!-- Police -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-bg: #f2f1ef;
+            --color-text: #111111;
+            --color-text-muted: #555555;
+            --color-border: rgba(17, 17, 17, 0.2);
+            --color-orange: #cc7629;
+            --font-main: 'Inter', sans-serif;
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 2rem;
+            --space-lg: 4rem;
+            --space-xl: 6rem;
+            --max-width: 1200px;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img { max-width: 100%; display: block; }
+        a { text-decoration: none; color: inherit; }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            background-color: var(--color-bg);
+            border-left: 1px solid var(--color-border);
+            border-right: 1px solid var(--color-border);
+            position: relative;
+        }
+
+        /* MENU */
+        .header__nav-wrapper {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 100%;
+            background-color: var(--color-text);
+        }
+
+        .header__nav-wrapper.is-active {
+            grid-template-rows: 1fr;
+        }
+
+        .header__nav-inner {
+            overflow: hidden;
+        }
+
+        .header__nav {
+            color: var(--color-bg);
+            display: flex;
+            flex-direction: column;
+            padding: calc(var(--space-lg) + 2.5rem) var(--space-md) var(--space-lg);
+        }
+
+        .header__nav a {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 600;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            padding: var(--space-sm) 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .header__nav a:hover { opacity: 0.7; }
+
+        .header__lang-switch {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            margin-top: var(--space-lg);
+            font-size: 1rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .header__lang-btn {
+            background: none;
+            border: none;
+            color: inherit;
+            font-family: inherit;
+            font-size: inherit;
+            font-weight: inherit;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .header__lang-btn:hover, .header__lang-btn.active { color: var(--color-bg); }
+        .header__lang-btn.active { text-decoration: underline; text-underline-offset: 4px; }
+
+        /* BOUTON MENU */
+        .header__menu-btn {
+            position: absolute;
+            top: var(--space-lg);
+            right: var(--space-md);
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            background-color: var(--color-text);
+            color: var(--color-bg);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-family: var(--font-main);
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            z-index: 20;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .header__menu-btn.is-active {
+            background-color: var(--color-bg);
+            color: var(--color-text);
+        }
+
+        .header__menu-icon {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .header__menu-icon span {
+            display: block;
+            width: 12px;
+            height: 2px;
+            background-color: currentColor;
+            transition: transform 0.3s ease;
+        }
+
+        /* HEADER CONTENT */
+        .header {
+            padding-top: calc(var(--space-lg) + 2rem); 
+            padding-bottom: var(--space-md);
+            border-bottom: 1px solid var(--color-border);
+            position: relative;
+        }
+
+        .header__title-group {
+            max-width: 800px;
+            margin-bottom: var(--space-xl);
+            padding: 0 var(--space-md);
+        }
+
+        .header__title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 600;
+            line-height: 0.95;
+            letter-spacing: -0.03em;
+            margin-bottom: var(--space-sm);
+        }
+
+        .header__location {
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .header__bottom {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            padding: 0 var(--space-md);
+        }
+
+        .header__bottom svg {
+            width: 16px;
+            height: 16px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* HERO */
+        .hero {
+            width: 100%;
+            height: 60vh;
+            min-height: 400px;
+            background-color: var(--color-orange);
+            overflow: hidden;
+        }
+
+        .hero__image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 20%;
+        }
+
+        /* ABOUT */
+        .about {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: var(--space-lg);
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .about__text {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 500;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            transition: opacity 0.3s ease;
+        }
+
+        .about__sidebar {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-left: 1px solid var(--color-border);
+            padding-left: var(--space-md);
+        }
+
+        .about__label { font-size: 0.875rem; font-weight: 500; }
+
+        .about__dots { display: flex; gap: var(--space-xs); }
+
+        .about__dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: transparent;
+            border: 2px solid var(--color-text);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .about__dot.active { background-color: var(--color-text); }
+
+        /* BOUTONS */
+        .links-action {
+            display: flex;
+            gap: var(--space-md);
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--color-border);
+            justify-content: center;
+        }
+
+        .btn-liquid {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2.5rem;
+            border: 1px solid var(--color-text);
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--color-text);
+            overflow: hidden;
+            z-index: 1;
+            transition: color 0.35s ease;
+        }
+
+        .btn-liquid::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--color-text);
+            transform: scaleY(0);
+            transform-origin: bottom center;
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+        }
+
+        .btn-liquid:hover { color: var(--color-bg); }
+        .btn-liquid:hover::before { transform: scaleY(1); }
+
+        /* CONTACT */
+        .contact {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .contact__sidebar {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            border-right: 1px solid var(--color-border);
+            padding-right: var(--space-md);
+        }
+
+        .contact__label { font-size: 0.875rem; font-weight: 500; }
+
+        .contact__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-md) var(--space-lg);
+            padding-left: var(--space-md);
+        }
+
+        .contact-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: var(--space-sm);
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-item:nth-child(1),
+        .contact-item:nth-child(2) {
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .contact-item__title {
+            font-size: 1.125rem;
+            font-weight: 600;
+        }
+
+        /* Style de l'icône Web Component */
+        .contact-item__icon {
+            font-size: 1.5rem;
+            color: var(--color-text);
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-item:hover .contact-item__icon {
+            opacity: 1;
+        }
+
+        /* FOOTER */
+        .footer {
+            padding: var(--space-md) 0;
+            overflow: hidden;
+            background-color: var(--color-bg);
+            display: flex;
+        }
+
+        .marquee {
+            display: flex;
+            white-space: nowrap;
+            font-size: clamp(4rem, 15vw, 12rem);
+            font-weight: 600;
+            letter-spacing: -0.04em;
+            line-height: 1;
+            color: var(--color-text);
+            animation: scroll 15s linear infinite;
+        }
+
+        .marquee span { padding-right: var(--space-md); }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .about, .contact { grid-template-columns: 1fr; }
+            .about__sidebar {
+                border-left: none;
+                border-top: 1px solid var(--color-border);
+                padding-left: 0;
+                padding-top: var(--space-md);
+                flex-direction: row;
+                align-items: center;
+            }
+            .contact__sidebar {
+                border-right: none;
+                border-bottom: 1px solid var(--color-border);
+                padding-right: 0;
+                padding-bottom: var(--space-md);
+            }
+            .contact__grid { padding-left: 0; padding-top: var(--space-md); }
+        }
+
+        @media (max-width: 600px) {
+            .header__menu-btn { top: var(--space-md); right: var(--space-md); }
+            .header__title-group { margin-top: var(--space-lg); }
+            .header__bottom { justify-content: flex-start; margin-top: var(--space-md); }
+            
+            .contact__grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-sm);
+            }
+            .contact-item:nth-child(2) {
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+            .contact-item {
+                padding-bottom: var(--space-sm);
+                border-bottom: 1px solid var(--color-border);
+            }
+            .contact-item:last-child { border-bottom: none; }
+
+            .links-action { flex-direction: column; }
+            .btn-liquid { width: 100%; }
+        }
+    </style>
+    
+    <!-- Script officiel d'Iconify pour les Web Components -->
+    <script type="module" src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- MENU -->
+        <div class="header__nav-wrapper" id="nav-wrapper">
+            <div class="header__nav-inner">
+                <nav class="header__nav">
+                    <a href="#about" data-i18n="nav_about">About</a>
+                    <a href="#realisations" data-i18n="nav_projects">Projects</a>
+                    <a href="#contact" data-i18n="nav_contact">Contact</a>
+                    
+                    <div class="header__lang-switch">
+                        <button class="header__lang-btn active" data-lang="en">EN</button>
+                        <span>|</span>
+                        <button class="header__lang-btn" data-lang="fr">FR</button>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Bouton Menu -->
+        <button class="header__menu-btn" id="menu-btn">
+            <div class="header__menu-icon">
+                <span></span>
+                <span></span>
+            </div>
+            <span data-i18n="menu_btn">Menu</span>
+        </button>
+
+        <header class="header">
+            <div class="header__title-group">
+                <h1 class="header__title" data-i18n="title">Bent Lindberg<br>Digital Designer</h1>
+                <p class="header__location" data-i18n="location">(Berlin, Germany)</p>
+            </div>
+            <div class="header__bottom">
+                <span data-i18n="scroll_down">Scroll Down</span>
+                <svg viewBox="0 0 24 24"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+            </div>
+        </header>
+
+        <section class="hero">
+            <img class="hero__image" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1964&auto=format&fit=crop" alt="Bent Lindberg portrait">
+        </section>
+
+        <section class="about" id="about">
+            <h2 class="about__text" id="about-text">
+                As a digital designer, I focus on producing top-notch and impactful digital experiences.
+            </h2>
+            <div class="about__sidebar">
+                <span class="about__label" data-i18n="about_label">(About Me)</span>
+                <div class="about__dots" id="slider-dots">
+                    <div class="about__dot active" data-index="0"></div>
+                    <div class="about__dot" data-index="1"></div>
+                    <div class="about__dot" data-index="2"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="links-action" id="realisations">
+            <a href="#" class="btn-liquid" data-i18n="btn_cv">Download my CV</a>
+            <a href="#" class="btn-liquid" data-i18n="btn_projects">See my projects</a>
+        </section>
+
+        <section class="contact" id="contact">
+            <div class="contact__sidebar">
+                <span class="contact__label" data-i18n="contact_label">(How to contact me)</span>
+            </div>
+            
+            <div class="contact__grid">
+                <a href="#" class="contact-item">
+                    <span class="contact-item__title">Instagram</span>
+                    <iconify-icon icon="line-md:instagram" class="contact-item__icon"></iconify-icon>
+                </a>
+                <a href="#" class="contact-item">
+                    <span class="contact-item__title">LinkedIn</span>
+                    <iconify-icon icon="line-md:linkedin" class="contact-item__icon"></iconify-icon>
+                </a>
+                <a href="#" class="contact-item">
+                    <span class="contact-item__title">GitHub</span>
+                    <iconify-icon icon="line-md:github" class="contact-item__icon"></iconify-icon>
+                </a>
+                <a href="#" class="contact-item">
+                    <span class="contact-item__title">Gmail</span>
+                    <iconify-icon icon="line-md:email" class="contact-item__icon"></iconify-icon>
+                </a>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="marquee" id="marquee-text">
+                <span data-i18n="footer_text">I build stuff.&nbsp;</span>
+                <span data-i18n="footer_text">I build stuff.&nbsp;</span>
+                <span data-i18n="footer_text">I build stuff.&nbsp;</span>
+                <span data-i18n="footer_text">I build stuff.&nbsp;</span>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const translations = {
+            en: {
+                nav_about: "About", nav_projects: "Projects", nav_contact: "Contact",
+                menu_btn: "Menu",
+                title: "Bent Lindberg<br>Digital Designer",
+                location: "(Berlin, Germany)",
+                scroll_down: "Scroll Down",
+                about_label: "(About Me)",
+                about_texts: [
+                    "As a digital designer, I focus on producing top-notch and impactful digital experiences.",
+                    "I collaborate closely with ambitious brands to translate their vision into stunning visual identities.",
+                    "My approach combines strategic thinking with meticulous attention to detail to deliver results."
+                ],
+                btn_cv: "Download my CV", btn_projects: "See my projects",
+                contact_label: "(How to contact me)",
+                footer_text: "I build stuff."
+            },
+            fr: {
+                nav_about: "À propos", nav_projects: "Réalisations", nav_contact: "Contact",
+                menu_btn: "Menu",
+                title: "Bent Lindberg<br>Designer Digital",
+                location: "(Berlin, Allemagne)",
+                scroll_down: "Défiler vers le bas",
+                about_label: "(À propos de moi)",
+                about_texts: [
+                    "En tant que designer digital, je me concentre sur la création d'expériences numériques de premier ordre et à fort impact.",
+                    "Je collabore étroitement avec des marques ambitieuses pour traduire leur vision en identités visuelles époustouflantes.",
+                    "Mon approche combine une réflexion stratégique et une attention méticuleuse aux détails pour livrer des résultats."
+                ],
+                btn_cv: "Télécharger mon CV", btn_projects: "Voir mes réalisations",
+                contact_label: "(Comment me contacter)",
+                footer_text: "Je construis des trucs."
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            let currentLang = 'en';
+            let currentSlide = 0;
+            let slideInterval;
+            const textElement = document.getElementById('about-text');
+            const dots = document.querySelectorAll('.about__dot');
+
+            function changeSlide(index) {
+                textElement.style.opacity = '0';
+                setTimeout(() => {
+                    textElement.textContent = translations[currentLang].about_texts[index];
+                    textElement.style.opacity = '1';
+                }, 200);
+                dots.forEach(d => d.classList.remove('active'));
+                dots[index].classList.add('active');
+                currentSlide = index;
+            }
+
+            function startAutoPlay() {
+                clearInterval(slideInterval);
+                slideInterval = setInterval(() => {
+                    changeSlide((currentSlide + 1) % 3);
+                }, 5000);
+            }
+
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    changeSlide(index);
+                    startAutoPlay();
+                });
+            });
+
+            function applyLanguage(lang) {
+                currentLang = lang;
+                document.querySelectorAll('[data-i18n]').forEach(element => {
+                    const key = element.getAttribute('data-i18n');
+                    if (translations[lang][key]) {
+                        if (key === 'title') {
+                            element.innerHTML = translations[lang][key];
+                        } else {
+                            element.textContent = translations[lang][key];
+                        }
+                    }
+                });
+                textElement.textContent = translations[lang].about_texts[currentSlide];
+                document.querySelectorAll('.header__lang-btn').forEach(btn => {
+                    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+                });
+                document.documentElement.lang = lang;
+            }
+
+            document.querySelectorAll('.header__lang-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    applyLanguage(e.currentTarget.getAttribute('data-lang'));
+                });
+            });
+
+            startAutoPlay();
+            applyLanguage('en');
+
+            const menuBtn = document.getElementById('menu-btn');
+            const navWrapper = document.getElementById('nav-wrapper');
+            const spans = menuBtn.querySelectorAll('span');
+
+            menuBtn.addEventListener('click', () => {
+                const isActive = navWrapper.classList.toggle('is-active');
+                menuBtn.classList.toggle('is-active', isActive);
+                
+                if (isActive) {
+                    spans[0].style.transform = 'rotate(45deg) translate(2px, 2px)';
+                    spans[1].style.transform = 'rotate(-45deg) translate(2px, -2px)';
+                } else {
+                    spans[0].style.transform = 'none';
+                    spans[1].style.transform = 'none';
+                }
+            });
+
+            function smoothScrollTo(targetY, duration = 1200) {
+                const startY = window.scrollY;
+                const difference = targetY - startY;
+                const startTime = performance.now();
+                
+                function step(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const ease = progress < 0.5 
+                        ? 4 * progress * progress * progress 
+                        : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+                    window.scrollTo(0, startY + difference * ease);
+                    if (progress < 1) requestAnimationFrame(step);
+                }
+                requestAnimationFrame(step);
+            }
+
+            document.querySelectorAll('.header__nav a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const target = document.querySelector(targetId);
+                    
+                    if (target) {
+                        navWrapper.classList.remove('is-active');
+                        menuBtn.classList.remove('is-active');
+                        spans[0].style.transform = 'none';
+                        spans[1].style.transform = 'none';
+                        
+                        setTimeout(() => {
+                            const targetY = target.getBoundingClientRect().top + window.scrollY;
+                            smoothScrollTo(targetY, 1200);
+                        }, 300);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
