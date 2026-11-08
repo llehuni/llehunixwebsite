@@ -1,5 +1,18 @@
 # llehunixwebsite
 
+## Structure
+
+```text
+src/
+├── css/       # CSS compilé
+├── data/      # Données JavaScript
+├── js/        # Modules et composants JavaScript
+├── pages/     # Pages secondaires et page d'erreur
+├── scss/      # Sources Sass
+└── index.html
+server.js
+```
+
 ## Développement
 
 Installe les dépendances, compile les styles, puis démarre le serveur :

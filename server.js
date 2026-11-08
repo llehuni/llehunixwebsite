@@ -6,10 +6,11 @@ import { fileURLToPath } from 'node:url';
 const PORT = Number(process.env.PORT) || 3000;
 const HOST = process.env.HOST || 'localhost';
 const ROOT_DIR = path.dirname(fileURLToPath(import.meta.url));
+const SRC_DIR = path.join(ROOT_DIR, 'src');
 
 const routes = new Map([
   ['/', '/index.html'],
-  ['/project', '/projects.html']
+  ['/project', '/pages/projects.html']
 ]);
 
 const contentTypes = new Map([
@@ -35,9 +36,9 @@ function getFilePath(requestPath) {
 
   const filePathValue = routePath || requestPath;
   const relativePath = filePathValue.replace(/^[/\\]+/, '');
-  const filePath = path.resolve(ROOT_DIR, relativePath);
+  const filePath = path.resolve(SRC_DIR, relativePath);
 
-  if (filePath !== ROOT_DIR && !filePath.startsWith(`${ROOT_DIR}${path.sep}`)) {
+  if (filePath !== SRC_DIR && !filePath.startsWith(`${SRC_DIR}${path.sep}`)) {
     return null;
   }
 

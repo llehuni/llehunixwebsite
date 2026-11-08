@@ -1,5 +1,5 @@
-import { projectsTranslations } from './data/translations.js';
-import { projectsData } from './data/projects.js';
+import { projectsTranslations } from '../data/translations.js';
+import { projectsData } from '../data/projects.js';
 import { renderMenu, initMenu } from './components/menu.js';
 import { renderFooter } from './components/footer.js';
 import { applyTranslations, initLanguageSwitcher } from './components/language.js';
@@ -7,7 +7,9 @@ import { renderProjectGrid } from './components/project-grid.js';
 import { createProjectModal } from './components/project-modal.js';
 
 const menuWrapper = document.getElementById('nav-wrapper');
+const menuButton = document.getElementById('menu-btn');
 const footer = document.getElementById('site-footer');
+const menu = initMenu({ wrapper: menuWrapper, button: menuButton });
 
 renderMenu(menuWrapper, [
     { href: '/', key: 'nav_about' },

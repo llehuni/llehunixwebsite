@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "build:css": "sass scss:css --style=expanded --source-map",
+    "build:css": "sass src/scss:src/css --style=expanded --source-map",
     "start": "node server.js",
     "dev": "node --watch server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
