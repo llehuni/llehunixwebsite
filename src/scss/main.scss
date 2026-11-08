@@ -3,6 +3,7 @@
 @use 'components/navigation';
 @use 'pages/home';
 @use 'pages/projects';
+@use 'pages/error';
 
 @media (max-width: 900px) {
   .projects__grid {

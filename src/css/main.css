@@ -698,6 +698,110 @@ button {
   stroke-linejoin: round;
 }
 
+.error-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.error-page .container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.error-page .header__lang-switch {
+  position: absolute;
+  z-index: 60;
+  top: 4rem;
+  right: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 0;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  color: #f2f1ef;
+  background-color: #111111;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+.error-page .header__lang-switch span {
+  color: rgba(255, 255, 255, 0.4);
+  user-select: none;
+}
+.error-page .header__lang-switch .header__lang-btn {
+  color: rgba(255, 255, 255, 0.5);
+}
+.error-page .header__lang-switch .header__lang-btn:hover, .error-page .header__lang-switch .header__lang-btn.active {
+  color: #f2f1ef;
+}
+.error-page .error-section {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 2rem;
+  position: relative;
+  text-align: center;
+}
+.error-page .error__code {
+  position: relative;
+  margin-bottom: 2rem;
+  color: transparent;
+  font-size: clamp(8rem, 25vw, 20rem);
+  font-weight: 700;
+  line-height: 0.8;
+  letter-spacing: -0.05em;
+  user-select: none;
+  -webkit-text-stroke: 2px #111111;
+}
+.error-page .error__code::after {
+  position: absolute;
+  z-index: -1;
+  top: 4px;
+  left: 4px;
+  content: "404";
+  color: #111111;
+  opacity: 0.1;
+  -webkit-text-stroke: 0;
+}
+.error-page .error__title {
+  margin-bottom: 1rem;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.error-page .error__desc {
+  max-width: 500px;
+  margin-bottom: 4rem;
+  color: #555555;
+  font-size: 1.125rem;
+}
+.error-page .btn-liquid {
+  gap: 0.5rem;
+}
+.error-page .btn-liquid svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.error-page .footer {
+  border-top: 1px solid rgba(17, 17, 17, 0.2);
+}
+
+@media (max-width: 600px) {
+  .error-page .header__lang-switch {
+    top: 2rem;
+    right: 2rem;
+  }
+  .error-page .error__code {
+    -webkit-text-stroke-width: 1px;
+  }
+}
 @media (max-width: 900px) {
   .projects__grid {
     grid-template-columns: 1fr;
