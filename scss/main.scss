@@ -1,8 +1,8 @@
-@use 'variables' as *;
-@use 'base';
-@use 'navigation';
-@use 'home';
-@use 'projects';
+@use 'abstracts/variables' as *;
+@use 'base/base';
+@use 'components/navigation';
+@use 'pages/home';
+@use 'pages/projects';
 
 @media (max-width: 900px) {
   .projects__grid {
