@@ -67,7 +67,9 @@
         </header>
 
         <section class="hero">
-            <img class="hero__image" src="/img/profile-llehunix.jpg" alt="Portrait de LaGrace Lehuni">
+            <button class="hero__trigger" id="profile-image-trigger" type="button" aria-label="Open portrait fullscreen">
+                <img class="hero__image" src="/img/profile-llehunix.jpg" alt="Portrait de LaGrace Lehuni">
+            </button>
         </section>
 
         <section class="about" id="about">
@@ -94,11 +96,11 @@
             </div>
             
             <div class="contact__grid">
-                <a href="#" class="contact-item">
+                <a href="https://www.instagram.com/llehunix?mdxt=NnRzeHJoaWF4cXUx" class="contact-item" target="_blank" rel="noopener noreferrer">
                     <span class="contact-item__title">Instagram</span>
                     <iconify-icon icon="line-md:instagram" class="contact-item__icon"></iconify-icon>
                 </a>
-                <a href="#" class="contact-item">
+                <a href="https://www.linkedin.com/in/lagrace-lehuni-9366052a5" class="contact-item" target="_blank" rel="noopener noreferrer">
                     <span class="contact-item__title">LinkedIn</span>
                     <iconify-icon icon="line-md:linkedin" class="contact-item__icon"></iconify-icon>
                 </a>
@@ -106,7 +108,7 @@
                     <span class="contact-item__title">GitHub</span>
                     <iconify-icon icon="line-md:github" class="contact-item__icon"></iconify-icon>
                 </a>
-                <a href="mailto:lehunilagrace@gmail.com" class="contact-item">
+                <a href="mailto:lehunilagrace@gmail.com" class="contact-item" target="_blank" rel="noopener noreferrer">
                     <span class="contact-item__title">Gmail</span>
                     <iconify-icon icon="line-md:email" class="contact-item__icon"></iconify-icon>
                 </a>
@@ -114,6 +116,14 @@
         </section>
 
         <footer class="footer" id="site-footer"></footer>
+    </div>
+
+    <div class="image-modal" id="profile-image-modal" role="dialog" aria-modal="true" aria-label="Portrait fullscreen" aria-hidden="true">
+        <button class="image-modal__close" id="profile-image-modal-close" type="button" aria-label="Close portrait">
+            <span></span>
+            <span></span>
+        </button>
+        <img class="image-modal__image" src="/img/profile-llehunix.jpg" alt="Portrait de LaGrace Lehuni">
     </div>
 
     <script type="module" src="/js/main.js"></script>

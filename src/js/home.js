@@ -3,11 +3,17 @@ import { renderMenu, initMenu } from './components/menu.js';
 import { renderFooter } from './components/footer.js';
 import { applyTranslations, initLanguageSwitcher } from './components/language.js';
 import { initAboutSlider } from './components/about-slider.js';
+import { initImageModal } from './components/image-modal.js';
 
 const menuWrapper = document.getElementById('nav-wrapper');
 const menuButton = document.getElementById('menu-btn');
 const footer = document.getElementById('site-footer');
 const menu = initMenu({ wrapper: menuWrapper, button: menuButton });
+initImageModal({
+    trigger: document.getElementById('profile-image-trigger'),
+    modal: document.getElementById('profile-image-modal'),
+    closeButton: document.getElementById('profile-image-modal-close')
+});
 
 renderMenu(menuWrapper, [
     { href: '#about', key: 'nav_about' },

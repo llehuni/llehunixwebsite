@@ -405,11 +405,85 @@ button {
   overflow: hidden;
   background-color: #cc7629;
 }
+.hero__trigger {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  cursor: zoom-in;
+}
 .hero__image {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center 20%;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hero:hover .hero__image {
+  transform: scale(1.03);
+}
+
+.image-modal {
+  position: fixed;
+  z-index: 200;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-color: #000;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: scale(1.04);
+  transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.5s;
+}
+.image-modal.is-active, .image-modal.is-closing {
+  visibility: visible;
+}
+.image-modal.is-active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+.image-modal.is-closing {
+  transform: scale(0.98);
+}
+.image-modal__image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.image-modal__close {
+  position: absolute;
+  z-index: 1;
+  top: 2rem;
+  right: 2rem;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.image-modal__close:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: rotate(90deg);
+}
+.image-modal__close span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 18px;
+  height: 1px;
+  background-color: #fff;
+}
+.image-modal__close span:first-child {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.image-modal__close span:last-child {
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 .about {
@@ -636,24 +710,38 @@ button {
   font-size: 0.875rem;
 }
 
+.projects-page {
+  overflow-x: hidden;
+}
+.projects-page .container {
+  transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.6s;
+}
+
+.projects-page.modal-open .container {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-100%);
+}
+
 .modal {
   position: fixed;
   z-index: 100;
   inset: 0;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
   background-color: #f2f1ef;
   opacity: 0;
   visibility: hidden;
-  transform: scale(0);
-  transform-origin: bottom left;
+  transform: translateX(100%);
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease, visibility 0.6s;
 }
 .modal.is-active {
   opacity: 1;
   visibility: visible;
-  transform: scale(1);
+  transform: translateX(0);
 }
 .modal__header {
   position: sticky;

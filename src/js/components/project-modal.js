@@ -70,6 +70,7 @@ export function createProjectModal({ projects, elements }) {
 
     function close() {
         elements.modal.classList.remove('is-active');
+        document.body.classList.remove('modal-open');
         document.body.style.overflow = '';
         stopImageAutoPlay();
     }
@@ -78,6 +79,7 @@ export function createProjectModal({ projects, elements }) {
         currentProjectIndex = index;
         currentImageIndex = 0;
         updateContent(language);
+        document.body.classList.add('modal-open');
         elements.modal.classList.add('is-active');
         document.body.style.overflow = 'hidden';
         startImageAutoPlay();
