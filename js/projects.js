@@ -87,12 +87,10 @@ const translations = {
     }
 };
 
-document.addEventListener('DOMContentLoaded', () => {
-    
-    let currentLang = 'en';
-    let currentProjectIndex = 0;
-    let currentImageIndex = 0;
-    let imageSlideInterval; // Variable pour le timer du slider
+let currentLang = 'en';
+let currentProjectIndex = 0;
+let currentImageIndex = 0;
+let imageSlideInterval; // Variable pour le timer du slider
 
     /* Éléments du DOM */
     const grid = document.getElementById('projects-grid');
@@ -322,4 +320,3 @@ document.addEventListener('DOMContentLoaded', () => {
     /* INITIALISATION */
     renderGrid();
     applyLanguage('en');
-});

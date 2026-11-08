@@ -33,13 +33,11 @@ const translations = {
     }
 };
 
-document.addEventListener('DOMContentLoaded', () => {
-    
-    let currentLang = 'en';
-    let currentSlide = 0;
-    let slideInterval;
-    const textElement = document.getElementById('about-text');
-    const dots = document.querySelectorAll('.about__dot');
+let currentLang = 'en';
+let currentSlide = 0;
+let slideInterval;
+const textElement = document.getElementById('about-text');
+const dots = document.querySelectorAll('.about__dot');
 
     function changeSlide(index) {
         textElement.style.opacity = '0';
@@ -131,8 +129,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.header__nav a').forEach(link => {
         link.addEventListener('click', (e) => {
-            e.preventDefault();
             const targetId = link.getAttribute('href');
+
+            if (!targetId || !targetId.startsWith('#')) {
+                return;
+            }
+
+            e.preventDefault();
             const target = document.querySelector(targetId);
             
             if (target) {
@@ -148,4 +151,3 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-});
