@@ -1,29 +1,3 @@
-const loaderMarkup = `
-  <div class="loader" id="loader" aria-label="Loading">
-    <div class="loader__content">
-      <div class="loader__top">
-        <span>Portfolio © ${new Date().getFullYear()}</span>
-        <span>Loading</span>
-      </div>
-
-      <div class="loader__center">
-        <div class="loader__wordmark" id="loader-wordmark">
-          <div class="loader__line" data-text="LaGrace"></div>
-          <div class="loader__line" data-text="Lehuni"></div>
-        </div>
-        <div class="loader__subtitle">Software Engineer</div>
-      </div>
-
-      <div class="loader__bottom">
-        <div class="loader__progress-track">
-          <div class="loader__progress-fill" id="loader-progress"></div>
-        </div>
-        <div class="loader__counter" id="loader-counter">000</div>
-      </div>
-    </div>
-  </div>
-`;
-
 const duration = 2200;
 
 function splitWordmark(wordmark) {
@@ -52,6 +26,7 @@ function finishLoading(loader) {
   const mainContent = document.querySelector('.main-content');
 
   loader.classList.add('is-loaded');
+  document.body.classList.add('page-content-ready');
   mainContent?.classList.add('is-visible');
   document.body.style.overflow = '';
 
@@ -60,8 +35,6 @@ function finishLoading(loader) {
 }
 
 export function initLoader() {
-  document.body.insertAdjacentHTML('beforebegin', loaderMarkup);
-
   const loader = document.getElementById('loader');
   const wordmark = document.getElementById('loader-wordmark');
   const counter = document.getElementById('loader-counter');
@@ -70,6 +43,10 @@ export function initLoader() {
   if (!loader || !wordmark || !counter || !progress) {
     throw new Error('Unable to initialize the page loader.');
   }
+
+  loader.querySelectorAll('[data-current-year]').forEach(element => {
+    element.textContent = new Date().getFullYear();
+  });
 
   document.body.style.overflow = 'hidden';
   splitWordmark(wordmark);

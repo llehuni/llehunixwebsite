@@ -14,6 +14,16 @@
     background-color: transparent;
   }
 
+  body.home-page > *:not(#loader),
+  body.projects-page > *:not(#loader) {
+    visibility: hidden;
+  }
+
+  body.home-page.page-content-ready > *:not(#loader),
+  body.projects-page.page-content-ready > *:not(#loader) {
+    visibility: visible;
+  }
+
   &__content {
     display: flex;
     flex-direction: column;

@@ -8,8 +8,8 @@ $colors: (
   orange: #cc7629
 );
 
-// Change this value to 1, 2 or 3 to switch the active font pair.
-$font-pair-index: 3;
+// Change this value to 1, 2, 3 or 4 to switch the active font pair.
+$font-pair-index: 4;
 $font-pairs: (
   1: (
     primary: ('Trench Slab', sans-serif),
@@ -22,6 +22,10 @@ $font-pairs: (
   3: (
     primary: ('Technor', sans-serif),
     secondary: ('Supreme', sans-serif)
+  ),
+  4: (
+    primary: ('Clash Display', sans-serif),
+    secondary: ('Archivo', sans-serif)
   )
 );
 $selected-font-pair: map.get($font-pairs, $font-pair-index);

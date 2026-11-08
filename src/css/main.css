@@ -4,8 +4,8 @@
   --color-text-muted: #555555;
   --color-border: rgba(17, 17, 17, 0.2);
   --color-orange: #cc7629;
-  --font-main: Supreme, sans-serif;
-  --font-heading: Technor, sans-serif;
+  --font-main: Archivo, sans-serif;
+  --font-heading: Clash Display, sans-serif;
   --space-xs: 0.5rem;
   --space-sm: 1rem;
   --space-md: 2rem;
@@ -25,7 +25,7 @@
 body {
   color: #111111;
   background-color: #f2f1ef;
-  font-family: "Supreme", sans-serif;
+  font-family: "Archivo", sans-serif;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
@@ -36,7 +36,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Technor", sans-serif;
+  font-family: "Clash Display", sans-serif;
 }
 
 img {
@@ -100,7 +100,7 @@ button {
 .header__nav a {
   padding: 1rem 0;
   font-size: clamp(2.5rem, 6vw, 4.5rem);
-  font-family: "Technor", sans-serif;
+  font-family: "Clash Display", sans-serif;
   font-weight: 600;
   line-height: 1.1;
   letter-spacing: -0.03em;
@@ -171,7 +171,7 @@ button {
 .header__title {
   margin-bottom: 1rem;
   font-size: clamp(3rem, 8vw, 6rem);
-  font-family: "Technor", sans-serif;
+  font-family: "Clash Display", sans-serif;
   font-weight: 600;
   line-height: 0.95;
   letter-spacing: -0.03em;
@@ -242,7 +242,7 @@ button {
   white-space: nowrap;
   color: #111111;
   font-size: clamp(4rem, 15vw, 12rem);
-  font-family: "Technor", sans-serif;
+  font-family: "Clash Display", sans-serif;
   font-weight: 600;
   line-height: 1;
   letter-spacing: -0.04em;
@@ -272,6 +272,14 @@ button {
 .loader.is-loaded {
   pointer-events: none;
   background-color: transparent;
+}
+.loader body.home-page > *:not(#loader),
+.loader body.projects-page > *:not(#loader) {
+  visibility: hidden;
+}
+.loader body.home-page.page-content-ready > *:not(#loader),
+.loader body.projects-page.page-content-ready > *:not(#loader) {
+  visibility: visible;
 }
 .loader__content {
   display: flex;
@@ -306,7 +314,7 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: "Technor", sans-serif;
+  font-family: "Clash Display", sans-serif;
   font-size: clamp(2.5rem, 8vw, 8rem);
   font-weight: 600;
   line-height: 0.88;
@@ -325,7 +333,7 @@ button {
 }
 .loader__subtitle {
   opacity: 0;
-  font-family: "Supreme", sans-serif;
+  font-family: "Archivo", sans-serif;
   font-size: clamp(0.65rem, 1vw, 0.85rem);
   font-weight: 500;
   letter-spacing: 0.4em;
@@ -355,7 +363,7 @@ button {
 }
 .loader__counter {
   align-self: flex-end;
-  font-family: "Technor", sans-serif;
+  font-family: "Clash Display", sans-serif;
   font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 500;
   letter-spacing: -0.02em;
@@ -413,7 +421,7 @@ button {
 }
 .about__text {
   font-size: clamp(1.5rem, 3vw, 2.5rem);
-  font-family: "Technor", sans-serif;
+  font-family: "Clash Display", sans-serif;
   font-weight: 500;
   line-height: 1.2;
   letter-spacing: -0.02em;
@@ -523,7 +531,7 @@ button {
 }
 .contact-item__title {
   font-size: 1.125rem;
-  font-family: "Technor", sans-serif;
+  font-family: "Clash Display", sans-serif;
   font-weight: 600;
 }
 .contact-item__icon {
@@ -619,7 +627,7 @@ button {
 }
 .project-card__title {
   font-size: 1.25rem;
-  font-family: "Technor", sans-serif;
+  font-family: "Clash Display", sans-serif;
   font-weight: 600;
   letter-spacing: -0.01em;
 }
@@ -779,7 +787,7 @@ button {
 }
 .modal__title {
   font-size: clamp(2rem, 4vw, 3rem);
-  font-family: "Technor", sans-serif;
+  font-family: "Clash Display", sans-serif;
   font-weight: 600;
   line-height: 1.1;
   letter-spacing: -0.02em;
@@ -899,7 +907,7 @@ button {
   margin-bottom: 2rem;
   color: transparent;
   font-size: clamp(8rem, 25vw, 20rem);
-  font-family: "Technor", sans-serif;
+  font-family: "Clash Display", sans-serif;
   font-weight: 700;
   line-height: 0.8;
   letter-spacing: -0.05em;
@@ -919,7 +927,7 @@ button {
 .error-page .error__title {
   margin-bottom: 1rem;
   font-size: clamp(2rem, 5vw, 3.5rem);
-  font-family: "Technor", sans-serif;
+  font-family: "Clash Display", sans-serif;
   font-weight: 600;
   letter-spacing: -0.02em;
 }

@@ -1,11 +1,12 @@
 export function initAboutSlider({ translations, textElement, dots }) {
     let currentSlide = 0;
     let slideInterval;
+    let currentTranslations = translations;
 
     function changeSlide(index) {
         textElement.style.opacity = '0';
         setTimeout(() => {
-            textElement.textContent = translations.about_texts[index];
+            textElement.textContent = currentTranslations.about_texts[index];
             textElement.style.opacity = '1';
         }, 200);
         dots.forEach(dot => dot.classList.remove('active'));
@@ -31,7 +32,8 @@ export function initAboutSlider({ translations, textElement, dots }) {
 
     return {
         setLanguage(translationsForLanguage) {
-            textElement.textContent = translationsForLanguage.about_texts[currentSlide];
+            currentTranslations = translationsForLanguage;
+            textElement.textContent = currentTranslations.about_texts[currentSlide];
         }
     };
 }
