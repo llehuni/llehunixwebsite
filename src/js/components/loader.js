@@ -8,10 +8,10 @@ const loaderMarkup = `
 
       <div class="loader__center">
         <div class="loader__wordmark" id="loader-wordmark">
-          <div class="loader__line" data-text="BENT"></div>
-          <div class="loader__line" data-text="LINDBERG"></div>
+          <div class="loader__line" data-text="LaGrace"></div>
+          <div class="loader__line" data-text="Lehuni"></div>
         </div>
-        <div class="loader__subtitle">Digital Designer</div>
+        <div class="loader__subtitle">Software Engineer</div>
       </div>
 
       <div class="loader__bottom">
@@ -60,7 +60,7 @@ function finishLoading(loader) {
 }
 
 export function initLoader() {
-  document.body.insertAdjacentHTML('afterbegin', loaderMarkup);
+  document.body.insertAdjacentHTML('beforebegin', loaderMarkup);
 
   const loader = document.getElementById('loader');
   const wordmark = document.getElementById('loader-wordmark');

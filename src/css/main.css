@@ -4,8 +4,8 @@
   --color-text-muted: #555555;
   --color-border: rgba(17, 17, 17, 0.2);
   --color-orange: #cc7629;
-  --font-main: General Sans, sans-serif;
-  --font-heading: Trench Slab, sans-serif;
+  --font-main: Supreme, sans-serif;
+  --font-heading: Technor, sans-serif;
   --space-xs: 0.5rem;
   --space-sm: 1rem;
   --space-md: 2rem;
@@ -25,7 +25,7 @@
 body {
   color: #111111;
   background-color: #f2f1ef;
-  font-family: "General Sans", sans-serif;
+  font-family: "Supreme", sans-serif;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
@@ -36,7 +36,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Trench Slab", sans-serif;
+  font-family: "Technor", sans-serif;
 }
 
 img {
@@ -100,7 +100,7 @@ button {
 .header__nav a {
   padding: 1rem 0;
   font-size: clamp(2.5rem, 6vw, 4.5rem);
-  font-family: "Trench Slab", sans-serif;
+  font-family: "Technor", sans-serif;
   font-weight: 600;
   line-height: 1.1;
   letter-spacing: -0.03em;
@@ -164,17 +164,20 @@ button {
   transition: transform 0.3s ease;
 }
 .header__title-group {
-  max-width: 800px;
+  max-width: 1080px;
   margin-bottom: 6rem;
   padding: 0 2rem;
 }
 .header__title {
   margin-bottom: 1rem;
   font-size: clamp(3rem, 8vw, 6rem);
-  font-family: "Trench Slab", sans-serif;
+  font-family: "Technor", sans-serif;
   font-weight: 600;
   line-height: 0.95;
   letter-spacing: -0.03em;
+}
+.header__title span {
+  color: #555555;
 }
 .header__location, .header__bottom {
   font-size: 0.875rem;
@@ -239,7 +242,7 @@ button {
   white-space: nowrap;
   color: #111111;
   font-size: clamp(4rem, 15vw, 12rem);
-  font-family: "Trench Slab", sans-serif;
+  font-family: "Technor", sans-serif;
   font-weight: 600;
   line-height: 1;
   letter-spacing: -0.04em;
@@ -303,7 +306,7 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: "Trench Slab", sans-serif;
+  font-family: "Technor", sans-serif;
   font-size: clamp(2.5rem, 8vw, 8rem);
   font-weight: 600;
   line-height: 0.88;
@@ -322,7 +325,7 @@ button {
 }
 .loader__subtitle {
   opacity: 0;
-  font-family: "General Sans", sans-serif;
+  font-family: "Supreme", sans-serif;
   font-size: clamp(0.65rem, 1vw, 0.85rem);
   font-weight: 500;
   letter-spacing: 0.4em;
@@ -352,7 +355,7 @@ button {
 }
 .loader__counter {
   align-self: flex-end;
-  font-family: "Trench Slab", sans-serif;
+  font-family: "Technor", sans-serif;
   font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 500;
   letter-spacing: -0.02em;
@@ -410,7 +413,7 @@ button {
 }
 .about__text {
   font-size: clamp(1.5rem, 3vw, 2.5rem);
-  font-family: "Trench Slab", sans-serif;
+  font-family: "Technor", sans-serif;
   font-weight: 500;
   line-height: 1.2;
   letter-spacing: -0.02em;
@@ -520,7 +523,7 @@ button {
 }
 .contact-item__title {
   font-size: 1.125rem;
-  font-family: "Trench Slab", sans-serif;
+  font-family: "Technor", sans-serif;
   font-weight: 600;
 }
 .contact-item__icon {
@@ -616,7 +619,7 @@ button {
 }
 .project-card__title {
   font-size: 1.25rem;
-  font-family: "Trench Slab", sans-serif;
+  font-family: "Technor", sans-serif;
   font-weight: 600;
   letter-spacing: -0.01em;
 }
@@ -776,7 +779,7 @@ button {
 }
 .modal__title {
   font-size: clamp(2rem, 4vw, 3rem);
-  font-family: "Trench Slab", sans-serif;
+  font-family: "Technor", sans-serif;
   font-weight: 600;
   line-height: 1.1;
   letter-spacing: -0.02em;
@@ -896,7 +899,7 @@ button {
   margin-bottom: 2rem;
   color: transparent;
   font-size: clamp(8rem, 25vw, 20rem);
-  font-family: "Trench Slab", sans-serif;
+  font-family: "Technor", sans-serif;
   font-weight: 700;
   line-height: 0.8;
   letter-spacing: -0.05em;
@@ -916,7 +919,7 @@ button {
 .error-page .error__title {
   margin-bottom: 1rem;
   font-size: clamp(2rem, 5vw, 3.5rem);
-  font-family: "Trench Slab", sans-serif;
+  font-family: "Technor", sans-serif;
   font-weight: 600;
   letter-spacing: -0.02em;
 }

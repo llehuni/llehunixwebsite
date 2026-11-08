@@ -2,32 +2,36 @@ export const homeTranslations = {
     en: {
         nav_about: "About", nav_projects: "Projects", nav_contact: "Contact",
         menu_btn: "Menu",
-        title: "Bent Lindberg<br>Digital Designer",
-        location: "(Berlin, Germany)",
+        title: "LaGrace Lehuni<br><span>Software Engineer</span>",
+        location: "(Kinshasa, DRC)",
         scroll_down: "Scroll Down",
         about_label: "(About Me)",
         about_texts: [
-            "As a digital designer, I focus on producing top-notch and impactful digital experiences.",
-            "I collaborate closely with ambitious brands to translate their vision into stunning visual identities.",
-            "My approach combines strategic thinking with meticulous attention to detail to deliver results."
+            "Software Engineer passionate about clean and efficient code.",
+            "Skilled in designing scalable solutions that meet business needs.",
+            "Always learning and keeping up with technology trends.",
+            "Effective in collaborative environments and motivated by new challenges."
         ],
-        btn_cv: "Download my CV", btn_projects: "See my projects",
+        btn_cv: "Download my CV",
+        btn_projects: "See my projects",
         contact_label: "(How to contact me)",
         footer_text: "I build stuff."
     },
     fr: {
         nav_about: "À propos", nav_projects: "Réalisations", nav_contact: "Contact",
         menu_btn: "Menu",
-        title: "Bent Lindberg<br>Designer Digital",
-        location: "(Berlin, Allemagne)",
+        title: "LaGrace Lehuni<br><span>Ingénieur logiciel</span>",
+        location: "(Kinshasa, RDC)",
         scroll_down: "Défiler vers le bas",
         about_label: "(À propos de moi)",
         about_texts: [
-            "En tant que designer digital, je me concentre sur la création d'expériences numériques de premier ordre et à fort impact.",
-            "Je collabore étroitement avec des marques ambitieuses pour traduire leur vision en identités visuelles époustouflantes.",
-            "Mon approche combine une réflexion stratégique et une attention méticuleuse aux détails pour livrer des résultats."
+            "Ingénieur logiciel passionné par le code propre et efficace.",
+            "Compétent dans la conception de solutions scalables répondant aux besoins métier.",
+            "Toujours en apprentissage et à jour des tendances technologiques.",
+            "Efficace en environnement collaboratif et motivé par de nouveaux défis."
         ],
-        btn_cv: "Télécharger mon CV", btn_projects: "Voir mes réalisations",
+        btn_cv: "Télécharger mon CV",
+        btn_projects: "Voir mes réalisations",
         contact_label: "(Comment me contacter)",
         footer_text: "Je construis des trucs."
     }
@@ -37,8 +41,8 @@ export const projectsTranslations = {
     en: {
         nav_about: "About", nav_projects: "Projects", nav_contact: "Contact",
         menu_btn: "Menu",
-        page_title: "Web Apps<br>Projects.",
-        page_subtitle: "A collection of my recent web applications.",
+        page_title: "My<br>Projects.",
+        page_subtitle: "A collection of my recent projects.",
         back_home: "Back to Home",
         prev_project: "Previous",
         next_project: "Next",
@@ -48,8 +52,8 @@ export const projectsTranslations = {
     fr: {
         nav_about: "À propos", nav_projects: "Réalisations", nav_contact: "Contact",
         menu_btn: "Menu",
-        page_title: "Projets<br>Web Apps.",
-        page_subtitle: "Une sélection de mes applications web récentes.",
+        page_title: "Mes<br>réalisations.",
+        page_subtitle: "Une sélection de mes réalisations récentes.",
         back_home: "Retour à l'accueil",
         prev_project: "Précédent",
         next_project: "Suivant",

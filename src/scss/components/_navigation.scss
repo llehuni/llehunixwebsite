@@ -109,7 +109,7 @@
   }
 
   &__title-group {
-    max-width: 800px;
+    max-width: 1080px;
     margin-bottom: space(xl);
     padding: 0 space(md);
   }
@@ -121,6 +121,10 @@
     font-weight: 600;
     line-height: 0.95;
     letter-spacing: -0.03em;
+
+    span {
+      color: color(text-muted);
+    }
   }
 
   &__location,
