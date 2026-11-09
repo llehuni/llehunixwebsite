@@ -2,11 +2,11 @@
   "name": "llehunixwebsite",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "local-server.js",
   "scripts": {
     "build:css": "sass src/scss:src/css --style=expanded --source-map",
-    "start": "node server.js",
-    "dev": "node --watch server.js",
+    "start": "node local-server.js",
+    "dev": "node --watch local-server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
