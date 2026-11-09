@@ -1,4 +1,4 @@
-import { projectsTranslations } from '../data/site-content.js';
+import { projectsTranslations } from './site-content.js';
 import { projectsData } from '../data/projects.js';
 import { renderMenu, initMenu } from './components/menu.js';
 import { renderFooter } from './components/footer.js';
