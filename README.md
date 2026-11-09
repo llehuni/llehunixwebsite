@@ -1,10 +1,6 @@
 # llehunixwebsite
 
----
-
 Ce dépôt contient le code source de mon portfolio personnel.
-
----
 
 ## Lancer avec Docker
 
