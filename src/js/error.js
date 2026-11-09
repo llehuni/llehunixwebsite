@@ -1,4 +1,4 @@
-import { errorPages } from '../data/translations.js';
+import { errorPages } from '../data/site-content.js';
 import { applyTranslations, initLanguageSwitcher } from './components/language.js';
 import { renderFooter } from './components/footer.js';
 

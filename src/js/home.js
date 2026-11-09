@@ -1,4 +1,4 @@
-import { homeTranslations } from '../data/translations.js';
+import { homeTranslations } from '../data/site-content.js';
 import { renderMenu, initMenu } from './components/menu.js';
 import { renderFooter } from './components/footer.js';
 import { applyTranslations, initLanguageSwitcher } from './components/language.js';
