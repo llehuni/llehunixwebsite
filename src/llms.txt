@@ -1,0 +1,18 @@
+# LaGrace Lehuni Portfolio
+
+This is the personal portfolio of LaGrace Lehuni, a Software Engineer based in Kinshasa, Democratic Republic of the Congo.
+
+## About
+
+LaGrace Lehuni focuses on clean and efficient code, scalable solutions that meet business needs, continuous learning, and collaborative software engineering.
+
+## Pages
+
+- Portfolio homepage: https://llehunix.vercel.app/
+- Projects: https://llehunix.vercel.app/project
+
+## Profiles
+
+- GitHub: https://github.com/llehuni
+- LinkedIn: https://www.linkedin.com/in/lagrace-lehuni-9366052a5
+- Instagram: https://www.instagram.com/llehunix

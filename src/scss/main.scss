@@ -10,16 +10,33 @@
   .projects__grid {
     grid-template-columns: 1fr;
   }
+
+  .about {
+    grid-template-columns: 1fr;
+  }
+
+  .about__sidebar {
+    min-height: 120px;
+    padding-top: space(md);
+    padding-left: 0;
+    border-top: 1px solid color(border);
+    border-left: 0;
+  }
 }
 
 @media (max-width: 600px) {
+  .container {
+    width: 100%;
+  }
+
   .header__menu-btn {
     top: space(md);
     right: space(md);
   }
 
   .header__title-group {
-    margin-top: space(lg);
+    margin-top: space(md);
+    padding-right: 5rem;
   }
 
   .header__bottom {
@@ -29,14 +46,93 @@
   }
 
   .modal__header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: space(md);
+    min-height: 72px;
+    padding: space(sm) space(md);
   }
 
   .modal__close {
     position: absolute;
-    top: space(md);
-    right: space(md);
+    top: space(sm);
+    right: space(sm);
+  }
+
+  .modal__nav {
+    padding-right: 3.5rem;
+  }
+
+  .modal__nav-btn {
+    font-size: 0.75rem;
+  }
+
+  .modal__body {
+    padding: space(sm);
+  }
+
+  .modal__desc {
+    font-size: 1rem;
+  }
+
+  .modal .btn-liquid {
+    align-self: stretch;
+    width: 100%;
+  }
+
+  .projects {
+    padding: space(lg) space(sm);
+  }
+
+  .links-action {
+    flex-direction: column;
+    align-items: stretch;
+    gap: space(sm);
+    padding: space(lg) space(sm);
+  }
+
+  .links-action .btn-liquid {
+    width: 100%;
+  }
+
+  .contact {
+    grid-template-columns: 1fr;
+    gap: space(md);
+    padding: space(lg) space(sm);
+  }
+
+  .contact__sidebar {
+    padding-right: 0;
+    padding-bottom: space(sm);
+    border-right: 0;
+    border-bottom: 1px solid color(border);
+  }
+
+  .contact__grid {
+    grid-template-columns: 1fr;
+    gap: space(sm);
+    padding-left: 0;
+  }
+
+  .contact-item,
+  .contact-item:nth-child(1),
+  .contact-item:nth-child(2) {
+    padding-bottom: space(sm);
+    border-bottom: 1px solid color(border);
+  }
+
+  .contact-item:last-child {
+    border-bottom: 0;
+  }
+
+  .hero {
+    height: 55vh;
+    min-height: 280px;
+  }
+
+  .image-modal {
+    padding: space(sm);
+  }
+
+  .image-modal__close {
+    top: space(sm);
+    right: space(sm);
   }
 }
