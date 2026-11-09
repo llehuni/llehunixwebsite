@@ -2,6 +2,7 @@
   "name": "llehunixwebsite",
   "version": "1.0.0",
   "description": "",
+  "main": "local-server.js",
   "scripts": {
     "build:css": "sass src/scss:src/css --style=expanded --source-map",
     "start": "node local-server.js",
