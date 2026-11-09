@@ -6,6 +6,41 @@ This is the personal portfolio of LaGrace Lehuni, a Software Engineer based in K
 
 LaGrace Lehuni focuses on clean and efficient code, scalable solutions that meet business needs, continuous learning, and collaborative software engineering.
 
+## Expertise
+
+- Software engineering
+- Web application development
+- Frontend development
+- Backend development
+- JavaScript
+- Python
+- Node.js
+- Django
+- FastAPI
+- software craftmanship
+- Responsive web design
+- Clean code
+- Clean architecture
+- Test Driven development
+- Domain Driven development
+- Design pattern
+- Docker
+- UML (Unified Modeling Language)
+- Database design
+- NoSQL
+- SQL
+- MySQL
+- PostgreSQL
+- SQLite
+- RESTful APIs
+- Object-Oriented Programming (OOP)
+- Web Security,
+- Authentication and Authorization,
+- OAuth,
+- JWT (JSON Web Tokens),
+- Scalable software solutions
+- Software engineer based in Kinshasa, DRC
+
 ## Pages
 
 - Portfolio homepage: https://llehunix.vercel.app/
