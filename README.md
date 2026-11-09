@@ -1,37 +1,35 @@
 # llehunixwebsite
 
-## Structure
+---
 
-```text
-src/
-├── css/       # CSS compilé
-├── data/      # Données JavaScript
-├── js/        # Modules et composants JavaScript
-├── pages/     # Pages secondaires et page d'erreur
-├── scss/      # Sources Sass
-└── index.html
-server.js
-```
+Ce dépôt contient le code source de mon portfolio personnel.
 
-## Développement
+---
 
-Installe les dépendances, compile les styles, puis démarre le serveur :
+## Lancer avec Docker
+
+Construire l'image Docker depuis la racine du projet :
 
 ```bash
-npm install
-npm run build:css
-npm start
+docker build -t llehunixwebsite .
 ```
 
-Le site est accessible sur [http://localhost:3000](http://localhost:3000).
-
-Routes disponibles :
-
-- `/` : page d'accueil ;
-- `/project` : page des projets.
-
-Pour redémarrer automatiquement le serveur pendant les modifications :
+Lancer le conteneur :
 
 ```bash
-npm run dev
+docker run --name llehunixwebsite -p 3000:3000 llehunixwebsite
 ```
+
+Le portfolio sera disponible à l'adresse
+[http://localhost:3000](http://localhost:3000).
+
+Pour arrêter et supprimer le conteneur :
+
+```bash
+docker stop llehunixwebsite
+docker rm llehunixwebsite
+```
+
+---
+
+## I build stuff.
