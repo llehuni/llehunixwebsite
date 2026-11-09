@@ -1,0 +1,10 @@
+{
+  "buildCommand": "npm run build:css",
+  "outputDirectory": "src",
+  "rewrites": [
+    {
+      "source": "/project",
+      "destination": "/pages/projects.html"
+    }
+  ]
+}
